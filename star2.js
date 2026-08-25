@@ -23,16 +23,5 @@ if (sum === original) {
     console.log(original + " is not an Armstrong number");
 }
 
-let n;
-let r;
-let p;
-let s=0;
 
-while(n!=0)
-{
-    r=n % 10;
-    s=r+(s*10);
-    n=n/10;
-}
-if(p===s)
 
