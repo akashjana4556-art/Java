@@ -1,0 +1,12 @@
+.Hii{
+    color: yellow;
+    font-size: 300px;
+    background-color: orange;
+}
+@media ( max-width:600px ) {
+    .Hii{
+        color: blue;
+        font-size: 50px;
+        background-color: white;
+    }
+}
