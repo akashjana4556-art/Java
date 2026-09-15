@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Golden Analog Wall Clock</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ddd;
+            font-family: Arial, sans-serif;
+        }
+
+        /* OUTER SILVER FRAME */
+        .clock {
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            padding: 15px;
+
+            background: linear-gradient(135deg,
+                    #ffffff,
+                    #777777,
+                    #eeeeee,
+                    #555555,
+                    #ffffff);
+
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.4),
+                inset 0 3px 5px white;
+
+            position: relative;
+        }
+
+        /* GOLDEN DIAL */
+        .dial {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+
+            background: radial-gradient(circle,
+                    #fff3a0,
+                    #e5c34c,
+                    #c29316,
+                    #8b6200);
+
+            border: 5px solid #705000;
+
+            box-shadow:
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* NUMBERS */
+        .number {
+            position: absolute;
+            color: #111;
+            font-size: 32px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .n12 {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .n1 {
+            top: 45px;
+            right: 95px;
+        }
+
+        .n2 {
+            top: 95px;
+            right: 45px;
+        }
+
+        .n3 {
+            top: 50%;
+            right: 18px;
+            transform: translateY(-50%);
+        }
+
+        .n4 {
+            bottom: 95px;
+            right: 45px;
+        }
+
+        .n5 {
+            bottom: 45px;
+            right: 95px;
+        }
+
+        .n6 {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .n7 {
+            bottom: 45px;
+            left: 95px;
+        }
+
+        .n8 {
+            bottom: 95px;
+            left: 45px;
+        }
+
+        .n9 {
+            top: 50%;
+            left: 18px;
+            transform: translateY(-50%);
+        }
+
+        .n10 {
+            top: 95px;
+            left: 45px;
+        }
+
+        .n11 {
+            top: 45px;
+            left: 95px;
+        }
+
+        /* HANDS */
+        .hand {
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+
+            transform-origin: bottom center;
+
+            border-radius: 10px;
+
+            z-index: 5;
+        }
+
+        /* BLACK HOUR HAND */
+        .hour {
+            width: 10px;
+            height: 100px;
+            background: black;
+        }
+
+        /* BLACK MINUTE HAND */
+        .minute {
+            width: 7px;
+            height: 140px;
+            background: black;
+        }
+
+        /* RED SECOND HAND */
+        .second {
+            width: 3px;
+            height: 160px;
+            background: red;
+        }
+
+        /* CENTER */
+        .center {
+            width: 20px;
+            height: 20px;
+
+            background: black;
+
+            border: 3px solid white;
+
+            border-radius: 50%;
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 10;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 500px) {
+
+            .clock {
+                width: 90vw;
+                height: 90vw;
+            }
+
+            .number {
+                font-size: 7vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CLOCK -->
+    <div class="clock">
+
+        <div class="dial">
+
+            <!-- NUMBERS -->
+            <div class="number n12">12</div>
+            <div class="number n1">1</div>
+            <div class="number n2">2</div>
+            <div class="number n3">3</div>
+            <div class="number n4">4</div>
+            <div class="number n5">5</div>
+            <div class="number n6">6</div>
+            <div class="number n7">7</div>
+            <div class="number n8">8</div>
+            <div class="number n9">9</div>
+            <div class="number n10">10</div>
+            <div class="number n11">11</div>
+
+            <!-- HANDS -->
+            <div class="hand hour" id="hour"></div>
+            <div class="hand minute" id="minute"></div>
+            <div class="hand second" id="second"></div>
+
+            <!-- CENTER -->
+            <div class="center"></div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function updateClock() {
+
+            // Get system time
+            const now = new Date();
+
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            // Calculate hand angles
+
+            const hourAngle =
+                (hours % 12) * 30 +
+                minutes * 0.5;
+
+            const minuteAngle =
+                minutes * 6 +
+                seconds * 0.1;
+
+            const secondAngle =
+                seconds * 6;
+
+
+            // Move hour hand
+            document.getElementById("hour").style.transform =
+                `translateX(-50%) rotate(${hourAngle}deg)`;
+
+
+            // Move minute hand
+            document.getElementById("minute").style.transform =
+                `translateX(-50%) rotate(${minuteAngle}deg)`;
+
+
+            // Move second hand
+            document.getElementById("second").style.transform =
+                `translateX(-50%) rotate(${secondAngle}deg)`;
+
+        }
+
+
+        // Start clock
+        updateClock();
+
+
+        // Update every second
+        setInterval(updateClock, 1000);
+
+    </script>
+
+</body>
+
+</html>

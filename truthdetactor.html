@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="truthdetactor.css">
+</head>
+<body>
+        <div class="container">
+    
+            <h1>🕵️ Truth Detector</h1>
+            <p class="subtitle">Ask a question and discover the truth!</p>
+    
+            <div class="detector">
+                <div class="screen">
+                    <div id="result">READY</div>
+                    <div id="percentage">0%</div>
+                </div>
+    
+                <input type="text" id="question" placeholder="Enter your question...">
+    
+                <button onclick="detectTruth()">
+                    🔍 Detect Truth
+                </button>
+    
+                <div class="loading" id="loading">
+                    <div class="scanner"></div>
+                    <p>Analyzing answer...</p>
+                </div>
+    
+                <div class="answer-box" id="answerBox">
+                    <h2 id="answer"></h2>
+                    <p id="message"></p>
+                </div>
+            </div>
+    
+            <p class="warning">
+                ⚠️ For entertainment only. This app cannot actually detect lies.
+            </p>
+    
+        </div>
+
+
+
+    <script src="truthdetactor.js"></script>
+</body>
+</html>

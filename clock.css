@@ -1,0 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at center, #eeeeee, #bdbdbd);
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =================================
+   MAIN CLOCK FRAME
+================================= */
+
+.clock {
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    /* Glossy Silver Frame */
+    background:
+        linear-gradient(135deg,
+            #ffffff 0%,
+            #cfcfcf 15%,
+            #777777 35%,
+            #eeeeee 50%,
+            #888888 70%,
+            #ffffff 100%);
+
+    padding: 15px;
+
+    position: relative;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.45),
+        inset 0 3px 5px rgba(255, 255, 255, 0.9),
+        inset 0 -5px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =================================
+   GOLDEN DIAL
+================================= */
+
+.dial {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    /* Golden Dial */
+    background:
+        radial-gradient(circle at 35% 25%,
+            #fff4a8 0%,
+            #e8c64c 25%,
+            #c99b19 55%,
+            #9b6c00 100%);
+
+    border: 5px solid #6d4c00;
+
+    box-shadow:
+        inset 0 0 20px rgba(80, 50, 0, 0.7),
+        inset 0 0 5px white;
+}
+
+
+/* =================================
+   CLOCK NUMBERS
+================================= */
+
+.number {
+    position: absolute;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    color: #111;
+
+    text-shadow:
+        1px 1px 1px rgba(255, 255, 255, 0.5);
+
+    z-index: 2;
+}
+
+
+/* Number positions */
+
+.n12 {
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.n1 {
+    top: 50px;
+    right: 105px;
+}
+
+.n2 {
+    top: 105px;
+    right: 50px;
+}
+
+.n3 {
+    top: 50%;
+    right: 23px;
+    transform: translateY(-50%);
+}
+
+.n4 {
+    bottom: 105px;
+    right: 50px;
+}
+
+.n5 {
+    bottom: 50px;
+    right: 105px;
+}
+
+.n6 {
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.n7 {
+    bottom: 50px;
+    left: 105px;
+}
+
+.n8 {
+    bottom: 105px;
+    left: 50px;
+}
+
+.n9 {
+    top: 50%;
+    left: 23px;
+    transform: translateY(-50%);
+}
+
+.n10 {
+    top: 105px;
+    left: 50px;
+}
+
+.n11 {
+    top: 50px;
+    left: 105px;
+}
+
+
+/* =================================
+   MINUTE TICKS
+================================= */
+
+.dial::before {
+    content: "";
+
+    position: absolute;
+
+    width: 92%;
+    height: 92%;
+
+    top: 4%;
+    left: 4%;
+
+    border-radius: 50%;
+
+    background:
+        repeating-conic-gradient(from 0deg,
+            #222 0deg 0.8deg,
+            transparent 0.8deg 6deg);
+
+    mask:
+        radial-gradient(transparent 0 88%,
+            black 89% 91%,
+            transparent 92%);
+
+    -webkit-mask:
+        radial-gradient(transparent 0 88%,
+            black 89% 91%,
+            transparent 92%);
+
+    pointer-events: none;
+}
+
+
+/* =================================
+   CLOCK HANDS
+================================= */
+
+.hand {
+    position: absolute;
+
+    left: 50%;
+    bottom: 50%;
+
+    transform-origin: bottom center;
+
+    border-radius: 10px;
+
+    z-index: 5;
+}
+
+
+/* Hour Hand */
+
+.hour-hand {
+    width: 11px;
+    height: 105px;
+
+    background: #111;
+
+    box-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Minute Hand */
+
+.minute-hand {
+    width: 8px;
+    height: 145px;
+
+    background: #111;
+
+    box-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Second Hand */
+
+.second-hand {
+    width: 3px;
+    height: 165px;
+
+    background: red;
+
+    box-shadow:
+        0 0 4px rgba(255, 0, 0, 0.6);
+}
+
+
+/* =================================
+   CENTER PIN
+================================= */
+
+.center {
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            #ffffff,
+            #555555 45%,
+            #111111 100%);
+
+    border: 3px solid #222;
+
+    z-index: 10;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 500px) {
+
+    .clock {
+        width: 90vw;
+        height: 90vw;
+        padding: 10px;
+    }
+
+    .number {
+        font-size: 7vw;
+    }
+
+    .hour-hand {
+        height: 23vw;
+    }
+
+    .minute-hand {
+        height: 31vw;
+    }
+
+    .second-hand {
+        height: 35vw;
+    }
+}

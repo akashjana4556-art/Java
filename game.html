@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    
+        <div class="container">
+    
+            <header>
+                <div>
+                    <h1>🛒 Grocery Stock Manager</h1>
+                    <p>Manage your shop inventory easily</p>
+                </div>
+    
+                <div id="date"></div>
+            </header>
+    
+    
+            <!-- DASHBOARD -->
+    
+            <div class="dashboard">
+    
+                <div class="dashboard-card">
+                    <span>📦</span>
+                    <div>
+                        <p>Total Products</p>
+                        <h2 id="totalProducts">0</h2>
+                    </div>
+                </div>
+    
+                <div class="dashboard-card">
+                    <span>📊</span>
+                    <div>
+                        <p>Total Quantity</p>
+                        <h2 id="totalQuantity">0</h2>
+                    </div>
+                </div>
+    
+                <div class="dashboard-card warning">
+                    <span>⚠️</span>
+                    <div>
+                        <p>Low Stock</p>
+                        <h2 id="lowStock">0</h2>
+                    </div>
+                </div>
+    
+                <div class="dashboard-card money">
+                    <span>💰</span>
+                    <div>
+                        <p>Stock Value</p>
+                        <h2>₹<span id="stockValue">0</span></h2>
+                    </div>
+                </div>
+    
+            </div>
+    
+    
+            <!-- ADD STOCK -->
+    
+            <div class="box">
+    
+                <h2>➕ Add New Stock</h2>
+    
+                <form id="stockForm">
+    
+                    <div class="form-grid">
+    
+                        <div>
+                            <label>Product Name</label>
+    
+                            <input type="text" id="productName" placeholder="Enter product name" required>
+                        </div>
+    
+    
+                        <div>
+                            <label>Category</label>
+    
+                            <select id="category" required>
+    
+                                <option value="">
+                                    Select Category
+                                </option>
+    
+                                <option>Rice</option>
+                                <option>Oil</option>
+                                <option>Dal</option>
+                                <option>Dairy</option>
+                                <option>Beverages</option>
+                                <option>Snacks</option>
+                                <option>Vegetables</option>
+                                <option>Others</option>
+    
+                            </select>
+                        </div>
+    
+    
+                        <div>
+                            <label>Quantity</label>
+    
+                            <input type="number" id="quantity" min="0" placeholder="Enter quantity" required>
+                        </div>
+    
+    
+                        <div>
+                            <label>Unit</label>
+    
+                            <select id="unit">
+    
+                                <option value="pcs">Pieces</option>
+                                <option value="kg">Kg</option>
+                                <option value="liter">Liter</option>
+                                <option value="packet">Packet</option>
+                                <option value="box">Box</option>
+    
+                            </select>
+                        </div>
+    
+    
+                        <div>
+                            <label>Price / Unit</label>
+    
+                            <input type="number" id="price" min="0" placeholder="₹ Price" required>
+                        </div>
+    
+    
+                        <div>
+                            <label>Minimum Stock</label>
+    
+                            <input type="number" id="minimum" min="0" value="10" required>
+                        </div>
+    
+                    </div>
+    
+    
+                    <button type="submit" class="add-button">
+                        ➕ ADD STOCK
+                    </button>
+    
+                </form>
+    
+            </div>
+    
+    
+            <!-- STOCK LIST -->
+    
+            <div class="box">
+    
+                <div class="stock-header">
+    
+                    <div>
+                        <h2>📦 Stock List</h2>
+                        <p>All products in your shop</p>
+                    </div>
+    
+                    <input type="text" id="search" placeholder="🔍 Search product...">
+    
+                </div>
+    
+    
+                <div class="table-wrapper">
+    
+                    <table>
+    
+                        <thead>
+    
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Value</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+    
+                        </thead>
+    
+                        <tbody id="stockTable">
+    
+                        </tbody>
+    
+                    </table>
+    
+                </div>
+    
+            </div>
+    
+    
+            <!-- LOW STOCK -->
+    
+            <div class="box">
+    
+                <h2>⚠️ Low Stock Alert</h2>
+    
+                <div id="lowStockList">
+                    No low stock products.
+                </div>
+    
+            </div>
+    
+    
+        </div>
+    
+    
+        <!-- EDIT POPUP -->
+    
+        <div id="editModal" class="modal">
+    
+            <div class="modal-content">
+    
+                <h2>✏️ Edit Stock</h2>
+    
+                <input type="hidden" id="editId">
+    
+    
+                <label>Product Name</label>
+    
+                <input type="text" id="editName">
+    
+    
+                <label>Category</label>
+    
+                <select id="editCategory">
+    
+                    <option>Rice</option>
+                    <option>Oil</option>
+                    <option>Dal</option>
+                    <option>Dairy</option>
+                    <option>Beverages</option>
+                    <option>Snacks</option>
+                    <option>Vegetables</option>
+                    <option>Others</option>
+    
+                </select>
+    
+    
+                <label>Quantity</label>
+    
+                <input type="number" id="editQuantity" min="0">
+    
+    
+                <label>Price</label>
+    
+                <input type="number" id="editPrice" min="0">
+    
+    
+                <label>Minimum Stock</label>
+    
+                <input type="number" id="editMinimum" min="0">
+    
+    
+                <div class="modal-buttons">
+    
+                    <button onclick="saveEdit()" class="save">
+                        💾 SAVE
+                    </button>
+    
+                    <button onclick="closeEdit()" class="cancel">
+                        CANCEL
+                    </button>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+
+
+   <script src="game.js"></script> 
+</body>
+</html>

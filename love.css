@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg,
+            #ff416c,
+            #ff4b2b);
+
+    color: white;
+}
+
+.container {
+    width: 430px;
+    text-align: center;
+    padding: 25px;
+}
+
+.heart {
+    font-size: 70px;
+
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.15);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+h1 {
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(15px);
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+input {
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 8px 0;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+.heart-small {
+    font-size: 25px;
+    margin: 5px;
+}
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #ff416c;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #ffe5ec;
+}
+
+.result {
+    display: none;
+
+    margin-top: 25px;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    color: #ff416c;
+
+    border: 8px solid rgba(255, 255, 255, 0.4);
+
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+#percentage {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+#details {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.8;
+}

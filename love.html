@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="love.css">
+</head>
+<body>    
+        <div class="container">
+    
+            <div class="heart">❤️</div>
+    
+            <h1>Love Predictor</h1>
+    
+            <p class="subtitle">
+                Discover your love compatibility!
+            </p>
+    
+            <div class="card">
+    
+                <input type="text" id="name1" placeholder="Your Name">
+    
+                <div class="heart-small">❤️</div>
+    
+                <input type="text" id="name2" placeholder="Partner's Name">
+    
+                <button onclick="calculateLove()">
+                    💕 Calculate Love
+                </button>
+    
+                <div class="result" id="result">
+    
+                    <div class="circle">
+                        <span id="percentage">0%</span>
+                    </div>
+    
+                    <h2 id="message"></h2>
+    
+                    <p id="details"></p>
+    
+                </div>
+    
+            </div>
+    
+            <p class="footer">
+                ❤️ Just for fun — not a scientific prediction.
+            </p>
+    
+        </div>
+        <script src="love.js"></script>
+</body>
+</html>
