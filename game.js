@@ -1,4 +1,3 @@
-
 /* =====================================
    GROCERY STOCK MANAGEMENT
 ===================================== */
@@ -46,7 +45,7 @@ function saveData() {
 
 form.addEventListener(
     "submit",
-    function(e) {
+    function (e) {
 
         e.preventDefault();
 
@@ -274,7 +273,7 @@ function displayProducts(list = products) {
 
         table.innerHTML += `
 
-    < tr >
+
 
                 <td>
                     ${product.id}
@@ -334,7 +333,6 @@ function displayProducts(list = products) {
 
                 </td>
 
-            </tr >
 
     `;
 
@@ -361,7 +359,7 @@ function updateDashboard() {
 
     let totalQuantity =
         products.reduce(
-            function(total, product) {
+            function (total, product) {
 
                 return total +
                     Number(product.quantity);
@@ -397,7 +395,7 @@ function updateDashboard() {
 
     let totalValue =
         products.reduce(
-            function(total, product) {
+            function (total, product) {
 
                 return total +
                     (
@@ -609,12 +607,12 @@ function closeEdit() {
 
 search.addEventListener(
     "input",
-    function() {
+    function () {
 
         let text =
             search.value
-            .toLowerCase()
-            .trim();
+                .toLowerCase()
+                .trim();
 
 
         let filtered =
@@ -622,14 +620,14 @@ search.addEventListener(
                 product =>
 
                     product.name
-                    .toLowerCase()
-                    .includes(text)
+                        .toLowerCase()
+                        .includes(text)
 
                     ||
 
                     product.category
-                    .toLowerCase()
-                    .includes(text)
+                        .toLowerCase()
+                        .includes(text)
             );
 
 
